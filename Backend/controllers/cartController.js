@@ -26,7 +26,7 @@ try {
 
 
 //remove items from user cart
-const removeFromCart=async(req,res)=>{
+const removeFromCart = async(req,res)=>{
 try {
    
    let userData = await userModel.findById(req.body.userId)
@@ -45,7 +45,7 @@ try {
 
 
 //fetch user cart data
-const getCart=async(req,res)=>{
+const getCart = async(req,res)=>{
   try {
     let userData=await userModel.findById(req.body.userId);
     //user cart data store in variable cartData

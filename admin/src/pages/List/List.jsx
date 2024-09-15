@@ -54,7 +54,8 @@ else{
         {list.map((item, index)=>{
         return(
             <div key={index} className='list-table-format'>
-            <img src={`${url}/images/`+ item.image} alt='product-image'/> 
+            {/* <img src={`${url}/images/`+ item.image} alt='product-image'/>  */}
+            <img src={item.image} alt='food-image' /> 
             <p>{item.name}</p>
             <p>{item.category}
             </p>

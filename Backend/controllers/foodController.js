@@ -6,8 +6,14 @@ import fs from 'fs'
 //add food item  
 const addFood=async(req, res)=>{
  
-    //store image in image_filename variable
- let image_filename=`${req.file.filename}`;
+    //   const imageUrl = req.file.path; 
+
+ 
+// let image_filename=`${req.file.filename}`;
+
+// Get Cloudinary URL
+let imageUrl = req.file.path; // This is the URL from Cloudinary
+
 
 //use foodModel to create documents
 // when we call the api we will get these details from  addFood function
@@ -16,7 +22,7 @@ const food=new foodModel({
     description:req.body.description,
     price:req.body.price,
     category:req.body.category,
-    image:image_filename
+    image:imageUrl
 })
 
 try {
@@ -52,7 +58,7 @@ try {
     fs.unlink(`uploads/${food.image}`,()=>{})
     //delete items from database
    await foodModel.findByIdAndDelete(req.body.id)
-   res.json({success:true,message:"Food Removed"})
+   res.json({success:true, message:"Food Removed"})
 } catch (error) {
     console.log(error)
     res.json({success:false,message:"Error"})
